@@ -25,10 +25,10 @@ export const PeopleTable = ({ people }: { people: Person[] }) => {
           <tbody>
             {people.map(person => {
               const mother = people.find(
-                name => name.name === person.motherName,
+                personObj => personObj.name === person.motherName,
               )?.slug;
               const father = people.find(
-                name => name.name === person.fatherName,
+                personObj => personObj.name === person.fatherName,
               )?.slug;
 
               return (

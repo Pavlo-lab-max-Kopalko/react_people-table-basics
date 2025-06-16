@@ -15,10 +15,6 @@ export const PersonLink = ({ person, mother, father }: Props) => {
 
   const motherInfo = person.motherName ? person.motherName : '-';
   const fatherInfo = person.fatherName ? person.fatherName : '-';
-  const motherLink = mother ? mother : motherInfo;
-  const fatherLink = father ? father : fatherInfo;
-
-  // console.log(selectedPersonSlug);
 
   return (
     <tr
@@ -44,7 +40,7 @@ export const PersonLink = ({ person, mother, father }: Props) => {
 
       <td>
         {mother ? (
-          <Link className={'has-text-danger'} to={`/people/${motherLink}`}>
+          <Link className={'has-text-danger'} to={`/people/${mother}`}>
             {person.motherName}
           </Link>
         ) : (
@@ -54,7 +50,7 @@ export const PersonLink = ({ person, mother, father }: Props) => {
 
       <td>
         {father ? (
-          <Link to={`/people/${fatherLink}`}>{person.fatherName}</Link>
+          <Link to={`/people/${father}`}>{person.fatherName}</Link>
         ) : (
           fatherInfo
         )}
