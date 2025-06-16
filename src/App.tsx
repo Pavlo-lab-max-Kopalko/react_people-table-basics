@@ -2,6 +2,8 @@ import './App.scss';
 import { Link, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { PeoplePage } from './components/PeoplePage';
 import classNames from 'classnames';
+import { HomePage } from './components/HomePage';
+import { NotFoundPage } from './components/NotFoundPage';
 
 export const App = () => {
   const location = useLocation();
@@ -41,12 +43,9 @@ export const App = () => {
       <main className="section">
         <div className="container">
           <Routes>
-            <Route path="/" element={<h1 className="title">Home Page</h1>} />
+            <Route path="/" element={<HomePage />} />
             <Route path="/home" element={<Navigate to="/" replace />} />
-            <Route
-              path="*"
-              element={<h1 className="title">Page not found</h1>}
-            />
+            <Route path="*" element={<NotFoundPage />} />
             <Route path="/people">
               <Route index element={<PeoplePage />} />
               <Route path=":slug" element={<PeoplePage />} />
