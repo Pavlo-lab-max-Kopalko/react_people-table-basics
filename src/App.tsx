@@ -1,6 +1,6 @@
 import './App.scss';
 import { Link, Routes, Route, useLocation, Navigate } from 'react-router-dom';
-import { PeoplePage } from './components/Loader/PeoplePage';
+import { PeoplePage } from './components/PeoplePage';
 import classNames from 'classnames';
 
 export const App = () => {

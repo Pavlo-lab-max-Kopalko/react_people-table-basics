@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import { Loader } from '.';
-import { Person } from '../../types';
-import { getPeople } from '../../api';
+import { Loader } from './Loader';
+import { Person } from '../types';
+import { getPeople } from '../api';
 import { PeopleTable } from './PeopleTable';
 import { useParams } from 'react-router-dom';
 import { SlugContext } from './SlugContext';
