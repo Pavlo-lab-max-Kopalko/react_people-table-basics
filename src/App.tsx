@@ -1,6 +1,6 @@
 import './App.scss';
 import { Link, Routes, Route, useLocation, Navigate } from 'react-router-dom';
-import { PeoplePage } from './PeoplePage';
+import { PeoplePage } from './components/Loader/PeoplePage';
 import classNames from 'classnames';
 
 export const App = () => {
@@ -41,7 +41,7 @@ export const App = () => {
       <main className="section">
         <div className="container">
           <Routes>
-            <Route path="/" element={<h1 className="title">Home page</h1>} />
+            <Route path="/" element={<h1 className="title">Home Page</h1>} />
             <Route path="/home" element={<Navigate to="/" replace />} />
             <Route
               path="*"

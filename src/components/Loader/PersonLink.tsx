@@ -1,7 +1,8 @@
-import { Link, useParams } from 'react-router-dom';
-import { Person } from './types';
+import { Link } from 'react-router-dom';
+import { Person } from '../../types';
 import cn from 'classnames';
-// import { useState } from 'react';
+import { useContext } from 'react';
+import { SlugContext } from './SlugContext';
 
 interface Props {
   person: Person;
@@ -10,10 +11,7 @@ interface Props {
 }
 
 export const PersonLink = ({ person, mother, father }: Props) => {
-  // const location = useLocation();
-  const { slug } = useParams();
-
-  console.log(slug);
+  const slug = useContext(SlugContext);
 
   const motherInfo = person.motherName ? person.motherName : '-';
   const fatherInfo = person.fatherName ? person.fatherName : '-';
@@ -25,20 +23,14 @@ export const PersonLink = ({ person, mother, father }: Props) => {
   return (
     <tr
       data-cy="person"
-      // className={cn(
-      //   person.slug === selectedPersonSlug ? 'has-background-warning' : '',
-      // )}
+      className={cn(person.slug === slug ? 'has-background-warning' : '')}
     >
       <td>
         <Link
           className={cn({
             'has-text-danger': person.sex === 'f',
           })}
-          to={`#/people/${person.slug}`}
-          // onClick={() => {
-          //   setSelectedPersonSlug('');
-          //   setSelectedPersonSlug(person.slug);
-          // }}
+          to={`/people/${person.slug}`}
         >
           {person.name}
         </Link>
@@ -52,13 +44,7 @@ export const PersonLink = ({ person, mother, father }: Props) => {
 
       <td>
         {mother ? (
-          <Link
-            className={cn({
-              'has-text-danger': person.sex === 'f',
-            })}
-            to={`#/people/${motherLink}`}
-            // onClick={() => setSelectedPersonSlug(motherLink)}
-          >
+          <Link className={'has-text-danger'} to={`/people/${motherLink}`}>
             {person.motherName}
           </Link>
         ) : (
@@ -68,7 +54,7 @@ export const PersonLink = ({ person, mother, father }: Props) => {
 
       <td>
         {father ? (
-          <Link to={`#/people/${fatherLink}`}>{person.fatherName}</Link>
+          <Link to={`/people/${fatherLink}`}>{person.fatherName}</Link>
         ) : (
           fatherInfo
         )}
